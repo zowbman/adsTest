@@ -12,4 +12,14 @@ dependencies {
     compile 'ch.qos.logback:logback-classic:1.1.7'
 }
 
+task deploy{
+	dependsOn  'copyLib'
+}
+
+task copyLib(type: Sync, dependsOn: jar) {
+    from configurations.compile
+    from jar.archivePath
+    into 'build/deploy'
+}
+
 jar.exclude 'logback-test.xml'
