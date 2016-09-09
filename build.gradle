@@ -13,13 +13,18 @@ dependencies {
 }
 
 task deploy{
-	dependsOn  'copyLib'
+	dependsOn  'copyLib2'
 }
 
-task copyLib(type: Sync, dependsOn: jar) {
+task copyLib1(type: Sync, dependsOn: jar) {
     from configurations.compile
     from jar.archivePath
     into 'build/deploy'
+}
+
+task copyLib2(type: Sync, dependsOn: copyLib1){
+	from 'src/main/webapp'
+	into 'build/deploy/webapp'
 }
 
 jar.exclude 'logback-test.xml'
