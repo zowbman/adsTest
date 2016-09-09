@@ -17,11 +17,10 @@
 
 # source function library
 . /etc/init.d/functions
-BASEDIR=/usr/local/boboface.com/boboface_server
-JAVA=/usr/local/java/bin/java
-MAIN_CLASS=com.boboface.MainServer
-APP=boboface_server
-APP_DIR=$BASEDIR/$APP/outer
+JAVA=@JAVA@
+MAIN_CLASS=@MAIN_CLASS@
+APP=@APP_NAME@
+APP_DIR=@BASEDIR@/$APP
 CLASSPATH=$APP_DIR/etc
 WORK_DIR=$APP_DIR/work
 LOG_DIR=$WORK_DIR/log
@@ -29,10 +28,10 @@ DATA_DIR=$WORK_DIR/data
 PID_FILE=$WORK_DIR/pid
 
 #OPTS=" -server "
-#OPTS=" @JAVA_OPTS@ "
+OPTS=" @JAVA_OPTS@ "
 #OPTS="-Dlog.dir=$LOG_DIR -Xms1024m -Xmx2048m -Xmn1600m"
 #OPTS="$OPTS -XX:+UseParallelOldGC -XX:-UseAdaptiveSizePolicy -XX:SurvivorRatio=8"
-OPTS=" -server -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintTenuringDistribution -Xloggc:$LOG_DIR/gc.log"
+#OPTS=" -server -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintTenuringDistribution -Xloggc:$LOG_DIR/gc.log"
 #OPTS="$OPTS -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8001 "
 
 RETVAL=0
