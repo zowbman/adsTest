@@ -1,0 +1,15 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.eclipse.jetty:jetty-webapp:9.3.0.M1'
+    compile 'org.eclipse.jetty:jetty-jsp:9.3.0.M1'
+    compile 'com.google.collections:google-collections:1.0'
+    compile 'ch.qos.logback:logback-classic:1.1.7'
+}
+
+jar.exclude 'logback-test.xml'
